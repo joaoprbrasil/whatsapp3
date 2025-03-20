@@ -1,14 +1,13 @@
-import { useState, useEffect } from 'react'
-import { addDoc, collection, serverTimestamp, onSnapshot, query, orderBy } from 'firebase/firestore'
-import './App.css'
-import { db } from './firebase.config'
+import { useState, useEffect } from 'react';
+import { addDoc, collection, serverTimestamp, onSnapshot, query, orderBy } from 'firebase/firestore';
+import './App.css';
+import { db } from './firebase.config';
 
 function App() {
   const [newMessage, setNewMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
   const messagesRef = collection(db, "messages");
-
 
   useEffect(() => {
     const queryMessages = query(messagesRef, orderBy("createdAt"));
@@ -21,6 +20,11 @@ function App() {
     });
   }, []);
 
+  const playSound = () => {
+    const audio = new Audio("https://www.myinstants.com/media/sounds/vine-boom.mp3");
+    audio.play();
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (newMessage === "") return;
@@ -31,13 +35,13 @@ function App() {
       user: document.getElementById("user_name").value,
     });
 
+    playSound(); 
     setNewMessage("");
   };
 
   return (
     <>
       <div className="chat-app">
-        {/* Exibir mensagens no formato "Usuário: Mensagem" */}
         <div>
           {messages.map((message) => (
             <p key={message.id}>
@@ -46,7 +50,6 @@ function App() {
           ))}
         </div>
         
-        {/* Formulário de envio de mensagens */}
         <form onSubmit={handleSubmit} className="new-message-form">
           <input id="user_name" placeholder="Username" />
           <input
