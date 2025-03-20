@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { addDoc, collection, serverTimestamp, onSnapshot, query } from 'firebase/firestore'
+import { addDoc, collection, serverTimestamp, onSnapshot, query, orderBy } from 'firebase/firestore'
 import './App.css'
 import { db } from './firebase.config'
 
@@ -9,8 +9,9 @@ function App() {
 
   const messagesRef = collection(db, "messages");
 
+
   useEffect(() => {
-    const queryMessages = query(messagesRef);
+    const queryMessages = query(messagesRef, orderBy("createdAt"));
     onSnapshot(queryMessages, (snapshot) => {
       let messages = [];
       snapshot.forEach((doc) => {
