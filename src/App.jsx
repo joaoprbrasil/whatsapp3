@@ -17,7 +17,7 @@ function App() {
         messages.push({ ...doc.data(), id: doc.id });
       });
       setMessages(messages);
-      playReceiveSound(); // Toca o som ao receber mensagem
+      playReceiveSound();
     });
   }, []);
 
@@ -41,7 +41,7 @@ function App() {
       user: document.getElementById("user_name").value,
     });
 
-    playSendSound(); // Toca o som ao enviar a mensagem
+    playSendSound();
     setNewMessage("");
   };
 
