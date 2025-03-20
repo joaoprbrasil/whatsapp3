@@ -17,11 +17,17 @@ function App() {
         messages.push({ ...doc.data(), id: doc.id });
       });
       setMessages(messages);
+      playReceiveSound(); 
     });
   }, []);
 
-  const playSound = () => {
+  const playSendSound = () => {
     const audio = new Audio("https://www.myinstants.com/media/sounds/vine-boom.mp3");
+    audio.play();
+  };
+
+  const playReceiveSound = () => {
+    const audio = new Audio("https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3");
     audio.play();
   };
 
@@ -35,7 +41,7 @@ function App() {
       user: document.getElementById("user_name").value,
     });
 
-    playSound(); 
+    playSendSound(); 
     setNewMessage("");
   };
 
