@@ -17,7 +17,7 @@ function App() {
         messages.push({ ...doc.data(), id: doc.id });
       });
       setMessages(messages);
-      playReceiveSound(); 
+      playReceiveSound(); // Toca o som ao receber mensagem
     });
   }, []);
 
@@ -27,7 +27,7 @@ function App() {
   };
 
   const playReceiveSound = () => {
-    const audio = new Audio("https://www.myinstants.com/instant/olha-a-mensagem-a-55448.mp3");
+    const audio = new Audio("https://www.myinstants.com/media/sounds/olha-a-mensagem.mp3");
     audio.play();
   };
 
@@ -41,7 +41,7 @@ function App() {
       user: document.getElementById("user_name").value,
     });
 
-    playSendSound(); 
+    playSendSound(); // Toca o som ao enviar a mensagem
     setNewMessage("");
   };
 
