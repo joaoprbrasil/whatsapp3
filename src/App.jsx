@@ -27,7 +27,7 @@ function App() {
   };
 
   const playReceiveSound = () => {
-    const audio = new Audio("https://www.myinstants.com/media/sounds/roblox-death-sound_1.mp3");
+    const audio = new Audio("https://www.myinstants.com/instant/olha-a-mensagem-a-55448.mp3");
     audio.play();
   };
 
